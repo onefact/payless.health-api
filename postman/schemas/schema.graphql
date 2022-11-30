@@ -1,0 +1,35 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type EmployerIdentificationNumber {
+  name: String!
+  id: ID!
+}
+
+type NationalProviderIdentifier {
+  id: ID!
+}
+
+type StandardChargeFile {
+  url: String!
+}
+
+type Hospital {
+  name: String!
+  ein: EmployerIdentificationNumber!
+  npis(ids: [ID!]): [NationalProviderIdentifier!]
+  zip: Int!
+  standardChargeFiles(urls: [String!]
+}
+
+type Query {
+  ein (ein: Integer): NationalProviderIdentifier
+}
+
+type Mutation {
+  addHospital (
+    # Name for the Hospital item
+    name: String!): Hospital!
+}
