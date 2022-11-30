@@ -5,6 +5,7 @@ id = 5266e940-67e8-4843-93f4-8b6f2f15748e
 
 [relations.collections]
 rootDirectory = collections
+files[] = {"id":"24683101-9376b44b-8e56-488b-916f-9fb87cc52c87","path":"Collection.json","metaData":{}}
 
 [relations.collections.metaData]
 
