@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package health.payless;
+
+// Cost is related to a medication, procedure, treatment, or hospital stay
+// Following conventions in https://ohdsi.github.io/CommonDataModel/cdm54.html#COST
+message Cost {
+  float total_charge = 1;
+  string name = 2;
+  optional string description = 3;
+  optional uint32 diagnosis_related_group_code = 3;
+  optional string current_procedural_terminology_code = 4;
+}
+
+message GetCostRequest {
+  optional uint32 national_provider_identifier = 1;
+  optional string description = 2;
+}
+
+message GetCostViaHospital {
+  uint32 national_provider_identifier = 1;
+  optional uint32 hospital_employer_identification_number = 2;
+  optional string name = 3;
+}
+
+service CostService {
+  rpc GetCost (GetCostRequest) returns (Cost) {}
+  rpc GetBooksViaHospital (GetCostViaHospital) returns (stream Cost) {}
+  rpc GetGreatestCost (stream GetCostRequest) returns (Cost) {}
+  rpc GetCosts (stream GetCostRequest) returns (stream Cost) {}
+}

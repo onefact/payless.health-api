@@ -10,7 +10,8 @@ rootDirectory = postman/collections
 
 [relations.apiDefinition]
 rootDirectory = postman/schemas
-files[] = {"path":"schema.graphql","metaData":{}}
+files[] = {"path":"schema.proto","metaData":{}}
 
 [relations.apiDefinition.metaData]
-type = graphql
+rootFiles[] = schema.proto
+type = proto:3
